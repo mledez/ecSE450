@@ -114,12 +114,12 @@ public class DepartmentTest {
 		}
 
 		try {
-			for (int i = testDepartment.getNumInDepartment(); i <= testDepartment.MAX_EMP; i++) {
+			for (int i = testDepartment.getNumInDepartment(); i <= Department.MAX_EMP; i++) {
 				firstId++;
 				testDepartment
 						.addEmployee(new Employee("Miguel", "Ledezma", firstId, 99.99, new int[] { 5, 6, 7, 8, 9 }));
 			}
-			assertEquals(testDepartment.getNumInDepartment(), testDepartment.MAX_EMP);
+			assertEquals(testDepartment.getNumInDepartment(), Department.MAX_EMP);
 			firstId++;
 			testDepartment.addEmployee(new Employee("Miguel", "Ledezma", firstId, 99.99, new int[] { 5, 6, 7, 8, 9 }));
 			fail("BadParamenterException NOT thrown from AddEmployee(Employee) with department already at max");
@@ -127,7 +127,7 @@ public class DepartmentTest {
 			fail("Wrong Exception (NullParameterException) thrown from AddEmployee(Employee) when adding with department already at max");
 		} catch (BadParameterException e) {
 			assertTrue(e.getMessage().startsWith("This Department is already at the max"));
-			assertEquals(testDepartment.getNumInDepartment(), testDepartment.MAX_EMP);
+			assertEquals(testDepartment.getNumInDepartment(), Department.MAX_EMP);
 		}
 	}
 
@@ -161,13 +161,13 @@ public class DepartmentTest {
 		}
 
 		try {
-			for (int i = testDepartment.getNumInDepartment(); i <= testDepartment.MAX_EMP; i++) {
+			for (int i = testDepartment.getNumInDepartment(); i <= Department.MAX_EMP; i++) {
 				firstId++;
 				testDepartment.addEmployee(new SalesEmployee("Miguel", "Ledezma", firstId, 99.99,
 						new int[] { 5, 6, 7, 8, 9 }, 10000, 12000));
 			}
 			System.out.println(testDepartment.getNumInDepartment());
-			assertEquals(testDepartment.getNumInDepartment(), testDepartment.MAX_EMP);
+			assertEquals(testDepartment.getNumInDepartment(), Department.MAX_EMP);
 			firstId++;
 			testDepartment.addEmployee(
 					new SalesEmployee("Miguel", "Ledezma", firstId, 99.99, new int[] { 5, 6, 7, 8, 9 }, 10000, 12000));
@@ -176,7 +176,7 @@ public class DepartmentTest {
 			fail("Wrong Exception (NullParameterException) thrown from AddEmployee(SalesEmployee) when adding with department already at max");
 		} catch (BadParameterException e) {
 			assertTrue(e.getMessage().startsWith("This Department is already at the max"));
-			assertEquals(testDepartment.getNumInDepartment(), testDepartment.MAX_EMP);
+			assertEquals(testDepartment.getNumInDepartment(), Department.MAX_EMP);
 		}
 	}
 
@@ -207,7 +207,7 @@ public class DepartmentTest {
 	public void testGetNumInDepartment() throws NullParameterException, BadParameterException {
 		assertTrue(testDepartment.getNumInDepartment() == 0);
 		int id = 1234;
-		for (int i = 1; i <= testDepartment.MAX_EMP; i++) {
+		for (int i = 1; i <= Department.MAX_EMP; i++) {
 			testDepartment.addEmployee(
 					new SalesEmployee("Miguel", "Ledezma", id, 99.99, new int[] { 5, 6, 7, 8, 9 }, 10000, 12000));
 			id++;

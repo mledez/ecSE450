@@ -95,6 +95,19 @@ public class Employee implements Comparable<Employee> {
 		setTimecard(new Timecard(daysIn));
 	}
 
+	/**
+	 * Constructor for the Employee class that takes another instance of Employee as parameter.
+	 * 
+	 * @param e
+	 *            Another instance of the Employee class
+	 * @throws NullParameterException
+	 *             If either First name or Last name parameters extracted from passed Employee are Null
+	 * @throws BadParameterException
+	 *             If either First name or Last name parameters extracted from passed Employee have are longer than 20 characters. If ID parameter
+	 *             extracted from passed Employee is not between 1000 and 9999. If Hourly Rate parameter extracted from passed Employee is less or
+	 *             equal to zero
+	 * @see #Employee(String, String, int, double, int[])
+	 */
 	public Employee(Employee e) throws NullParameterException, BadParameterException {
 		setFirstName(e.getFirstName());
 		setLastName(e.getLastName());
@@ -103,6 +116,12 @@ public class Employee implements Comparable<Employee> {
 		setTimecard(new Timecard(e.getTimecard()));
 	}
 
+	/**
+	 * Compares the Employee with another Employee passed as parameter based on their Employee ID.
+	 * 
+	 * @return Returns -1 if ID number of passed Employee is larger. Returns 0 if they have the same ID. Returns 1 if ID number of passed Employee is
+	 *         smaller.
+	 */
 	@Override
 	public int compareTo(Employee eIn) {
 		if (getEmployeeId() < eIn.getEmployeeId()) {
@@ -114,14 +133,37 @@ public class Employee implements Comparable<Employee> {
 		}
 	}
 
+	/**
+	 * Returns the Weekly Pay of the Employee.
+	 * 
+	 * @see #setHourlyRate(double)
+	 * @return Returns the Weekly Pay of the Employee
+	 */
 	public double getWeeklyPay() {
 		return getTimecard().getWeeklyHours() * getHourlyRate();
 	}
 
+	/**
+	 * Returns the First name of the Employee.
+	 * 
+	 * @see #setFirstName(String)
+	 * @return Returns the First name of the Employee
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
+	/**
+	 * Sets the provided name as the Fist name of the Employee.
+	 * 
+	 * @param fName
+	 *            The Employee's First name
+	 * @throws NullParameterException
+	 *             If the provided name is null
+	 * @throws BadParameterException
+	 *             If the provided name length is either zero or less, or more than 20.
+	 * @see #getFirstName()
+	 */
 	public final void setFirstName(String fName) throws NullParameterException, BadParameterException {
 		if (fName == null) {
 			throw new NullParameterException("Null value passed in for firstName");
@@ -133,10 +175,27 @@ public class Employee implements Comparable<Employee> {
 		firstName = fName;
 	}
 
+	/**
+	 * Returns the Last name of the Employee.
+	 * 
+	 * @see #setLastName(String)
+	 * @return Returns the Last name of the Employee
+	 */
 	public String getLastName() {
 		return lastName;
 	}
 
+	/**
+	 * Sets the provided name as the Last name of the Employee.
+	 * 
+	 * @param lName
+	 *            The Employee's Last name
+	 * @throws NullParameterException
+	 *             If the provided name is null
+	 * @throws BadParameterException
+	 *             If the provided name length is either zero or less, or more than 20.
+	 * @see #getLastName()
+	 */
 	public final void setLastName(String lName) throws NullParameterException, BadParameterException {
 		if (lName == null) {
 			throw new NullParameterException("Null value passed in for lastName");
@@ -148,10 +207,25 @@ public class Employee implements Comparable<Employee> {
 		lastName = lName;
 	}
 
+	/**
+	 * Returns the ID of the Employee.
+	 * 
+	 * @see #setEmployeeId(int)
+	 * @return Returns the ID of the Employee
+	 */
 	public int getEmployeeId() {
 		return employeeId;
 	}
 
+	/**
+	 * Sets the provided number as the ID of the Employee
+	 * 
+	 * @param eId
+	 *            The Employee's ID number
+	 * @throws BadParameterException
+	 *             If the provided number is either less than 1000 or more than 9999
+	 * @see #getEmployeeId()
+	 */
 	public final void setEmployeeId(int eId) throws BadParameterException {
 		if (eId < 1000 || eId > 9999) {
 			throw new BadParameterException("Bad value passed in for employeeId: " + eId);
@@ -159,10 +233,25 @@ public class Employee implements Comparable<Employee> {
 		employeeId = eId;
 	}
 
+	/**
+	 * Returns the Hourly Rate of the Employee.
+	 * 
+	 * @see #setHourlyRate(double)
+	 * @return Returns the Hourly Rate of the Employee
+	 */
 	public double getHourlyRate() {
 		return hourlyRate;
 	}
 
+	/**
+	 * Sets the provided number as the Hourly Rate of the Employee.
+	 * 
+	 * @param hRate
+	 *            The Employee's Hourly Rate.
+	 * @throws BadParameterException
+	 *             If the provided number is less or equal to 0.0
+	 * @see #getHourlyRate()
+	 */
 	public final void setHourlyRate(double hRate) throws BadParameterException {
 		if (hRate <= 0.0) {
 			throw new BadParameterException("Bad value passed in for hourlyRate: " + hRate);
@@ -170,10 +259,25 @@ public class Employee implements Comparable<Employee> {
 		hourlyRate = hRate;
 	}
 
+	/**
+	 * Returns the Timecard instance of the Employee.
+	 * 
+	 * @see #setTimecard(Timecard)
+	 * @return Returns the Timecard instance of the Employee
+	 */
 	private Timecard getTimecard() {
 		return timecard;
 	}
 
+	/**
+	 * Sets the provided Timecard as the Timecard of the Employee.
+	 * 
+	 * @param tCard
+	 *            The Employee's Timecard
+	 * @throws NullParameterException
+	 *             If the provided Timecard is null
+	 * @see #getTimecard()
+	 */
 	private void setTimecard(Timecard tCard) throws NullParameterException {
 		if (tCard == null) {
 			throw new NullParameterException("Null Timecard passed to setTimecard");
@@ -181,6 +285,11 @@ public class Employee implements Comparable<Employee> {
 		timecard = tCard;
 	}
 
+	/**
+	 * Returns a formatted report with all the information about the Employee.
+	 * 
+	 * @return Returns a formatted report with all the information about the Employee
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

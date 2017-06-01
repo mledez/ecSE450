@@ -9,7 +9,6 @@ import utils.NullParameterException;
 
 /**
  * The Department class represents a Department that could include Employees.<br>
- * <br>
  * Usage example:
  * 
  * <pre>

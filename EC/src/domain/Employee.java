@@ -8,17 +8,84 @@ import utils.BadParameterException;
 import utils.NullParameterException;
 
 /**
+ * A class representing an Employee.<br>
+ * Usage example:
+ * 
+ * <pre>
+ * Employee myEmployee = new Employee("Christopher", "Hield", 5000, 50.0, new int[]{5, 6, 7, 8, 9});
+ * Employee myEmployee = new Employee(Employee otherEmployee);
+ * </pre>
+ * 
+ * @author Christopher Hield
+ * @see domain.Department
+ * @see domain.SalesEmployee
+ * @see domain.Timecard
+ * @since Version 1.8
  *
- * @author hieldc
  */
 public class Employee implements Comparable<Employee> {
 
+	/**
+	 * The first name of the Employee.
+	 * 
+	 * @see #setFirstName(String)
+	 * @see #getFirstName()
+	 */
 	private String firstName;
+
+	/**
+	 * The last name of the Employee.
+	 * 
+	 * @see #setLastName(String)
+	 * @see #getLastName()
+	 */
 	private String lastName;
+
+	/**
+	 * The ID of the Employee.
+	 * 
+	 * @see #setEmployeeId(int)
+	 * @see #getEmployeeId()
+	 */
 	private int employeeId;
+
+	/**
+	 * The Hourly Rate of the Employee.
+	 * 
+	 * @see #setHourlyRate(double)
+	 * @see #getHourlyRate()
+	 */
 	private double hourlyRate;
+
+	/**
+	 * The Timecard of the Employee. The Timecard holds all the information regarding the worked hours during the week.
+	 * 
+	 * @see #setTimecard(Timecard)
+	 * @see #getTimecard()
+	 */
 	private Timecard timecard;
 
+	/**
+	 * Constructor for the Employee class - need non-null and non-empty First and Last name, an Employee ID between 1000 and 9999, a higher than zero
+	 * Hourly Rate, and an int Array holding the worked days.
+	 * 
+	 * @param fName
+	 *            The Employee's first name
+	 * @param lName
+	 *            The Employee's last name
+	 * @param eId
+	 *            The Employee's ID
+	 * @param hRate
+	 *            The Employee's Hourly Rate
+	 * @param daysIn
+	 *            The Employee's int Array with the worked days
+	 * @throws NullParameterException
+	 *             If either First name or Last name parameters are Null
+	 * @throws BadParameterException
+	 *             If either First name or Last name have are longer than 20 characters. If ID is not between 1000 and 9999. If Hourly Rate is less or
+	 *             equal to zero
+	 * @see #Employee(Employee)
+	 */
 	public Employee(String fName, String lName, int eId, double hRate, int[] daysIn)
 			throws NullParameterException, BadParameterException {
 		setFirstName(fName);
